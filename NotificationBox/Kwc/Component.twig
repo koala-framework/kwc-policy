@@ -1,0 +1,29 @@
+{% if showBanner %}
+    <div class="{{ rootElementClass }}">
+        {{ config|hiddenOptions }}
+        <div class="{{ 'innerBox'|bemClass }}">
+            {% if headline %}
+                <div class="kwfUp-notificationBox__headline">
+                    {{ headline }}
+                </div>
+            {% endif %}
+            {% if text %}
+                <div class="kwfUp-notificationBox__text">
+                    {{ text }}
+                </div>
+            {% endif %}
+            <div class="kwfUp-notificationBox__info">
+                {% if linktag.hasContent() %}
+                    {{ renderer.component(linktag) }}
+                    {{ moreText }}
+                {% endif %}
+
+                {% if linktag.hasContent() %}</a>{% endif %}
+            </div>
+            <a href="#" class="{{ 'accept'|bemClass }}
+                {% if acceptText|length > 0 %}{{ 'accept--hasText'|bemClass }}{% endif %}">
+                <span class="{{ 'accept__text'|bemClass }}">{{ acceptText }}</span>
+            </a>
+        </div>
+    </div>
+{% endif %}
