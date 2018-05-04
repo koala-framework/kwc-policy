@@ -1,0 +1,21 @@
+{
+    "name": "vivid-planet/kwc-notification-box",
+    "description": "Notification Box package that displays information/news/agreements and stores the 'time of click' in a cookie",
+    "homepage": "http://www.vivid-planet.com/",
+    "type": "library",
+    "minimum-stability": "dev",
+    "require": {
+        "koala-framework/koala-framework": "~3.10"
+    },
+    "extra": {
+        "kwf-lingohub": {
+            "account": "vivid-planet",
+            "project": "kwc-notification-box"
+        }
+    },
+    "autoload": {
+        "psr-0": {
+            "PoiDealerWebsitePlugin_": ""
+        }
+    }
+}
