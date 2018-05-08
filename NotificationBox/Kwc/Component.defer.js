@@ -37,7 +37,7 @@ onReady.onRender('.kwcClass', function (el, config) {
             el.hide();
             setCookieValue('notificationSeen', new Date().toUTCString(), 30);
             var body = $('body');
-            body.removeClass('kwfUp-showCookieBanner').addClass('kwfUp-cookieAccepted');
+            body.removeClass('kwfUp-showNotificationBox').addClass('kwfUp-notificationSeen');
             onReady.callOnContentReady((body), { action: 'widthChange' });
         });
     }
