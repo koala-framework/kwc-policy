@@ -1,6 +1,6 @@
 <?php
 
-class NotificationBox_Kwc_Component extends Kwc_Abstract_Composite_Component
+class KwcNotificationBox_Kwc_Box_Component extends Kwc_Abstract_Composite_Component
 {
     public static function getSettings($param = null)
     {

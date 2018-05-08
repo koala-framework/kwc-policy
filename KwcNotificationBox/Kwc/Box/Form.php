@@ -1,5 +1,5 @@
 <?php
-class NotificationBox_Kwc_Form extends Kwc_Abstract_Composite_Form
+class KwcNotificationBox_Kwc_Box_Form extends Kwc_Abstract_Composite_Form
 {
     protected function _initFields()
     {
