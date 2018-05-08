@@ -36,7 +36,7 @@ onReady.onRender('.kwcClass', function (el, config) {
         el.find('.kwcBem__accept').click(function(e) {
             e.preventDefault();
             el.hide();
-            setCookieValue('notificationSeen', new Date().toUTCString(), 30);
+            setCookieValue('notificationSeen', config.changeDate, 30);
             var body = $('body');
             body.removeClass('kwfUp-showNotificationBox').addClass('kwfUp-notificationSeen');
             onReady.callOnContentReady((body), { action: 'widthChange' });
