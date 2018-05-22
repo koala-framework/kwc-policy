@@ -1,5 +1,5 @@
 {
-    "name": "vivid-planet/kwc-notification-box",
+    "name": "koala-framework/kwc-notification-box",
     "description": "Notification Box package that displays information/news/agreements and stores the 'time of click' in a cookie",
     "homepage": "http://www.vivid-planet.com/",
     "type": "library",
