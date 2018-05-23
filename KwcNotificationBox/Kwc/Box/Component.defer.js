@@ -3,7 +3,7 @@ var $ = require('jquery');
 var onReady = require('kwf/on-ready');
 var cookies = require('js-cookie');
 
-onReady.onRender('.kwcClass', function (el, config) {
+onReady.onRender('.kwcClass', function (el) {
 
     var setCookieValue = function(key, value, daysUntilExpired) {
         cookies.set(key, value, { expires: daysUntilExpired });
@@ -23,7 +23,7 @@ onReady.onRender('.kwcClass', function (el, config) {
 
     var
         notificationSeen = getCookieValue('notificationSeen'),
-        notificationChanged = config.changeDate;
+        notificationChanged = el.data('date');
 
     if (!notificationSeen || (new Date(notificationSeen) < new Date(notificationChanged))) {
         el.show();

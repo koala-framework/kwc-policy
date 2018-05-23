@@ -24,12 +24,6 @@ class KwcNotificationBox_Kwc_Box_Component extends Kwc_Abstract_Composite_Compon
         $ret = parent::getTemplateVars($renderer);
         $ret['showBanner'] = $this->_getRow()->show_banner;
         $ret['changeDate'] = $this->_getRow()->change_date;
-
-        $ret['config'] = array(
-            'showBanner' => $ret['showBanner'],
-            'changeDate' => $ret['changeDate']
-        );
-
         $ret['headline'] = $this->_getRow()->headline;
         $ret['text'] = $this->_getRow()->text;
         $ret['moreText'] = $this->_getRow()->more_text;
