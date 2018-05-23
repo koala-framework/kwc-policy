@@ -1,30 +1,24 @@
 "use strict";
 var $ = require('jquery');
 var onReady = require('kwf/on-ready');
+var cookies = require('js-cookie');
 
 onReady.onRender('.kwcClass', function (el, config) {
 
     var setCookieValue = function(key, value, daysUntilExpired) {
-        var d = new Date();
-        d.setTime(d.getTime() + (daysUntilExpired * 24 * 60 * 60 * 1000));
-        var expires = 'expires=' + d.toUTCString();
-        document.cookie = key + '=' + value + ';' + expires + ';path=/';
+        cookies.set(key, value, { expires: daysUntilExpired });
     };
 
     var getCookieValue = function(key) {
-        var name = key + '=',
-            decoded = decodeURIComponent(document.cookie),
-            ca = decoded.split(';');
-        for (var i = 0; i <ca.length; i++) {
-            var c = ca[i];
-            while (c.charAt(0) == ' ') {
-                c = c.substring(1);
-            }
-            if (c.indexOf(name) == 0) {
-                return c.substring(name.length, c.length);
-            }
-        }
-        return '';
+        return cookies.get(key);
+    };
+
+    var getCookieIsSet =  function(key) {
+        return !!cookies.get(key);
+    };
+
+    var removeCookie = function(key) {
+        cookies.remove(key);
     };
 
     var

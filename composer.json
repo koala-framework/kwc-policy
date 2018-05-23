@@ -5,7 +5,8 @@
     "type": "library",
     "minimum-stability": "dev",
     "require": {
-        "koala-framework/koala-framework": "~3.10"
+        "koala-framework/koala-framework": "~3.10",
+        "js-cookie": "^2.2.0"
     },
     "extra": {
         "kwf-lingohub": {
