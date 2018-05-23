@@ -15,7 +15,6 @@ onReady.onRender('.kwcClass', function (el) {
         notificationChanged = el.data('date');
 
     if (new Date(notificationSeen) < new Date(notificationChanged)) {
-        console.log('show');
         el.show();
         el.find('.kwcBem__accept').click(function(e) {
             e.preventDefault();
