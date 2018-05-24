@@ -28,6 +28,42 @@ class KwcNotificationBox_Kwc_Box_Component extends Kwc_Abstract_Composite_Compon
         $ret['text'] = $this->_getRow()->text;
         $ret['moreText'] = $this->_getRow()->more_text;
         $ret['acceptText'] = $this->_getRow()->accept_text;
+
+        $privacyPolicyComponents = Kwf_Component_Data_Root::getInstance()->getComponentsByClass(
+            'PoiDealerWebsitePlugin_Kwc_DealerContent_PrivacyPolicy_Component',
+            array('subroot' => $this->getData()));
+        $ret['privacyPolicyComponent'] = count($privacyPolicyComponents) ? $privacyPolicyComponents[0] : null;
+
         return $ret;
+    }
+
+    public static function getReplaceContent($componentClass, $dealer, $language, $dealerContentConfig, $content) {
+        $output = preg_replace('/<!-- NonDealerContentStart -->.*?<!-- NonDealerContentEnd -->/s', '', $content);
+
+        $url = "/dataprotection/1.0/{$dealer->country}/{$dealer->bnr}";
+        $results = PoiDealerWebsitePlugin_AutohausApiCachedRequest::request($url);
+
+        // get policy with lastEssentialModification closest to now
+        $nextAlterationDate = date('c');
+        $nextPolicyAlteration = '';
+        if (is_array($results) && count($results) > 0) {
+            foreach ($results as $result) {
+                if (time() - strtotime($nextAlterationDate) < time() - strtotime($result['lastEssentialModification'])) {
+                    $nextAlterationDate = $result['lastEssentialModification'];
+                    $nextPolicyAlteration = $result;
+                }
+            }
+        }
+
+        // set date of last essential modification
+        $nextAlterationDate = date("Y-m-d H:i:s", strtotime('2018-05-26'));
+        $output = preg_replace('/(?<=data-date=").*?(?=")/', $nextAlterationDate, $output);
+
+        // set essential modification text
+        preg_match('/<!-- dataprivacyLink\((.*?)\) -->/s', $output, $dataprivacyLink);
+        $essentialModificationText = str_replace('${dataprotection/dataprivacyLink}', $dataprivacyLink[1], $nextPolicyAlteration['essentialModificationText']);
+        $output = preg_replace('/<!-- replaceWithDealerTextStart -->.*?<!-- replaceWithDealerTextEnd -->/s', $essentialModificationText, $output);
+
+        return $output;
     }
 }
