@@ -11,6 +11,9 @@
         "kwf-lingohub": {
             "account": "vivid-planet",
             "project": "kwc-notification-box"
+        },
+        "require-npm": {
+            "js-cookie": "^2.2.0"
         }
     },
     "autoload": {
