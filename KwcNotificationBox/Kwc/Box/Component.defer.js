@@ -5,14 +5,14 @@ var cookies = require('js-cookie');
 
 onReady.onRender('.kwcClass', function (el) {
 
-    if (!!cookies.get('notificationSeen')) {
+    if (!cookies.get('notificationSeen')) {
         var d = new Date();
         cookies.set('notificationSeen', d.toUTCString(), { expires: 30 });
     }
 
     var
         notificationSeen = cookies.get('notificationSeen'),
-        notificationChanged = el.data('date');
+        notificationChanged = el.find('.kwcBem__alterationDate').data('alteration-date');
 
     if (new Date(notificationSeen) < new Date(notificationChanged)) {
         el.show();
