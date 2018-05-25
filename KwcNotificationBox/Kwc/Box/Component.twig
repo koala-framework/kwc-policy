@@ -1,39 +1,45 @@
-{% if showBanner %}
-    <!-- PoiDealerWebsitePlugin_DynamicReplace({{ data.componentClass }}{{ dealerContentConfig }}) -->
-    <div class="{{ rootElementClass }}" data-date="{{ alterationDate }}">
-        <div class="{{ 'innerBox'|bemClass }}">
-            <!-- NonDealerContentStart -->
-            {% if headline %}
-                <div class="kwfUp-notificationBox__headline">
-                    {{ headline }}
-                </div>
-            {% endif %}
-            <!-- NonDealerContentEnd -->
-            {% if text %}
-                <div class="kwfUp-notificationBox__text">
-                    <!-- replaceWithDealerTextStart -->
-                        {{ text }}
-                    <!-- replaceWithDealerTextEnd -->
-                </div>
-            {% endif %}
-            <!-- NonDealerContentStart -->
-            <div class="kwfUp-notificationBox__info">
-                {% if linktag.hasContent() %}
-                    {{ renderer.component(linktag) }}
-                    {{ moreText }}
-                {% endif %}
+{% block notificationBox %}
+    {% if showBanner %}
+        <div class="{{ rootElementClass }}">
 
-                {% if linktag.hasContent() %}</a>{% endif %}
-            </div>
-            <!-- NonDealerContentEnd -->
-            <a href="#" class="{{ 'accept'|bemClass }}
-                {% if acceptText|length > 0 %}{{ 'accept--hasText'|bemClass }}{% endif %}">
-                <span class="{{ 'accept__text'|bemClass }}">{{ acceptText }}</span>
-            </a>
+            {% block alterationDate %}
+                <div class="{{ 'alterationDate'|bemClass }}" data-alteration-date="{{ alterationDate }}"></div>
+            {% endblock %}
+
+            {% block headline %}
+                {% if headline %}
+                    <div class="kwfUp-notificationBox__headline">
+                        {{ headline }}
+                    </div>
+                {% endif %}
+            {% endblock %}
+
+            {% block infoText %}
+                {% if text %}
+                    <div class="kwfUp-notificationBox__text">
+                        {{ text }}
+                    </div>
+                {% endif %}
+            {% endblock %}
+
+            {% block infoLink %}
+                <div class="kwfUp-notificationBox__info">
+                    {% if linktag.hasContent() %}
+                        {{ renderer.component(linktag) }}
+                        {{ moreText }}
+                    {% endif %}
+
+                    {% if linktag.hasContent() %}</a>{% endif %}
+                </div>
+            {% endblock %}
+
+            {% block acceptLink %}
+                <a href="#" class="{{ 'accept'|bemClass }}
+                    {% if acceptText|length > 0 %}{{ 'accept--hasText'|bemClass }}{% endif %}">
+                    <span class="{{ 'accept__text'|bemClass }}">{{ acceptText }}</span>
+                </a>
+            {% endblock %}
+
         </div>
-    </div>
-    <!-- dataprivacyLink({% if privacyPolicyComponent %}{{ renderer.componentLink(privacyPolicyComponent) }}{% endif %}) -->
-    <!-- cookieLink({% if cookiePolicyComponent %}{{ renderer.componentLink(cookiePolicyComponent) }}{% endif %}) -->
-    <!-- websiteLink(<a href="/">%sitename%</a>) -->
-    <!-- /PoiDealerWebsitePlugin_DynamicReplace -->
-{% endif %}
+    {% endif %}
+{% endblock %}
