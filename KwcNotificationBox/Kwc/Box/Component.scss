@@ -1,7 +1,5 @@
 .kwcClass {
-    display: none;
-
-    .kwcBem__info {
-        display: inline;
+    &__hidden {
+        display: none;
     }
 }
