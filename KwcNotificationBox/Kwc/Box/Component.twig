@@ -8,10 +8,10 @@
             {% endblock %}
 
             {% block left %}
-                <div class="kwfUp-notificationBox__left">
+                <div class="{{ 'left'|bemClass }}">
                     {% block headline %}
                         {% if headline %}
-                            <div class="kwfUp-notificationBox__headline">
+                            <div class="{{ 'headline'|bemClass }}">
                                 {{ headline }}
                             </div>
                         {% endif %}
@@ -19,14 +19,14 @@
 
                     {% block infoText %}
                         {% if text %}
-                            <div class="kwfUp-notificationBox__text">
+                            <div class="{{ 'text'|bemClass }}">
                                 {{ text }}
                             </div>
                         {% endif %}
                     {% endblock %}
 
                     {% block infoLink %}
-                        <div class="kwfUp-notificationBox__info">
+                        <div class="{{ 'info'|bemClass }}">
                             {% if linktag.hasContent() %}
                                 {{ renderer.component(linktag) }}
                                 {{ moreText }}
@@ -39,7 +39,7 @@
             {% endblock %}
 
             {% block right %}
-                <div class="kwfUp-notificationBox__right">
+                <div class="{{ 'right'|bemClass }}">
                     {% block acceptLink %}
                         <a href="#" class="{{ 'accept'|bemClass }}
                             {% if acceptText|length > 0 %}{{ 'accept--hasText'|bemClass }}{% endif %}">
