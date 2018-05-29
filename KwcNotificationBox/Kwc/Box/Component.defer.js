@@ -15,10 +15,10 @@ onReady.onRender('.kwcClass', function (el) {
         notificationChanged = el.find('.kwcBem__alterationDate').data('alteration-date');
 
     if (new Date(notificationSeen) < new Date(notificationChanged)) {
-        el.show();
+        el.removeClass('kwcBem__hidden');
         el.find('.kwcBem__accept').click(function(e) {
             e.preventDefault();
-            el.hide();
+            el.addClass('kwcBem__hidden');
             var d = new Date();
             cookies.remove('notificationSeen');
             cookies.set('notificationSeen', d.toUTCString(), { expires: 30 });

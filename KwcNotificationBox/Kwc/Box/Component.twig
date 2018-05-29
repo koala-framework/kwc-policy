@@ -1,45 +1,54 @@
 {% block notificationBox %}
     {% if showBanner %}
-        <div class="{{ rootElementClass }}">
+        <div class="{{ rootElementClass }} {{ 'hidden'|bemClass }}">
+            <div class="{{ 'inner'|bemClass }}">
 
             {% block alterationDate %}
                 <div class="{{ 'alterationDate'|bemClass }}" data-alteration-date="{{ alterationDate }}"></div>
             {% endblock %}
 
-            {% block headline %}
-                {% if headline %}
-                    <div class="kwfUp-notificationBox__headline">
-                        {{ headline }}
-                    </div>
-                {% endif %}
-            {% endblock %}
+            {% block left %}
+                <div class="{{ 'left'|bemClass }}">
+                    {% block headline %}
+                        {% if headline %}
+                            <div class="{{ 'headline'|bemClass }}">
+                                {{ headline }}
+                            </div>
+                        {% endif %}
+                    {% endblock %}
 
-            {% block infoText %}
-                {% if text %}
-                    <div class="kwfUp-notificationBox__text">
-                        {{ text }}
-                    </div>
-                {% endif %}
-            {% endblock %}
+                    {% block infoText %}
+                        {% if text %}
+                            <div class="{{ 'text'|bemClass }}">
+                                {{ text }}
+                            </div>
+                        {% endif %}
+                    {% endblock %}
 
-            {% block infoLink %}
-                <div class="kwfUp-notificationBox__info">
-                    {% if linktag.hasContent() %}
-                        {{ renderer.component(linktag) }}
-                        {{ moreText }}
-                    {% endif %}
+                    {% block infoLink %}
+                        <div class="{{ 'info'|bemClass }}">
+                            {% if linktag.hasContent() %}
+                                {{ renderer.component(linktag) }}
+                                {{ moreText }}
+                            {% endif %}
 
-                    {% if linktag.hasContent() %}</a>{% endif %}
+                            {% if linktag.hasContent() %}</a>{% endif %}
+                        </div>
+                    {% endblock %}
                 </div>
             {% endblock %}
 
-            {% block acceptLink %}
-                <a href="#" class="{{ 'accept'|bemClass }}
-                    {% if acceptText|length > 0 %}{{ 'accept--hasText'|bemClass }}{% endif %}">
-                    <span class="{{ 'accept__text'|bemClass }}">{{ acceptText }}</span>
-                </a>
+            {% block right %}
+                <div class="{{ 'right'|bemClass }}">
+                    {% block acceptLink %}
+                        <a href="#" class="{{ 'accept'|bemClass }}
+                            {% if acceptText|length > 0 %}{{ 'accept--hasText'|bemClass }}{% endif %}">
+                            <span class="{{ 'accept__text'|bemClass }}">{{ acceptText }}</span>
+                        </a>
+                    {% endblock %}
+                </div>
             {% endblock %}
-
+            </div>
         </div>
     {% endif %}
 {% endblock %}
