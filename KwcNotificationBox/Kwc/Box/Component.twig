@@ -1,11 +1,7 @@
 {% block notificationBox %}
     {% if showBanner %}
-        <div class="{{ rootElementClass }} {{ 'hidden'|bemClass }}">
+        <div class="{{ rootElementClass }} {{ 'hidden'|bemClass }}" data-alteration-date="{{ alterationDate }}">
             <div class="{{ 'inner'|bemClass }}">
-
-            {% block alterationDate %}
-                <div class="{{ 'alterationDate'|bemClass }}" data-alteration-date="{{ alterationDate }}"></div>
-            {% endblock %}
 
             {% block left %}
                 <div class="{{ 'left'|bemClass }}">
