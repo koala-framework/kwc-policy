@@ -1,1 +1,1 @@
-# kwc-notification-box
+# kwc-policy

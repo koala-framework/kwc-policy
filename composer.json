@@ -1,6 +1,6 @@
 {
-    "name": "koala-framework/kwc-notification-box",
-    "description": "Notification Box package that displays information/news/agreements and stores the 'time of click' in a cookie",
+    "name": "koala-framework/kwc-policy",
+    "description": "Policy package with severals components to ease policy links oder notifications",
     "homepage": "http://www.vivid-planet.com/",
     "type": "library",
     "minimum-stability": "dev",
@@ -10,7 +10,7 @@
     "extra": {
         "kwf-lingohub": {
             "account": "vivid-planet",
-            "project": "kwc-notification-box"
+            "project": "kwc-policy"
         },
         "require-npm": {
             "js-cookie": "^2.2.0"
@@ -18,7 +18,7 @@
     },
     "autoload": {
         "psr-0": {
-            "KwcNotificationBox_": ""
+            "KwcPolicy_": ""
         }
     }
 }

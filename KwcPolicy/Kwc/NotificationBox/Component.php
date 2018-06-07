@@ -1,12 +1,11 @@
 <?php
-
-class KwcNotificationBox_Kwc_Box_Component extends Kwc_Abstract_Composite_Component
+class KwcPolicy_Kwc_NotificationBox_Component extends Kwc_Abstract_Composite_Component
 {
     public static function getSettings($param = null)
     {
         $ret = parent::getSettings($param);
         $ret['rootElementClass'] = 'kwfUp-webStandard';
-        $ret['componentName'] = trlKwfStatic('Notification Box');
+        $ret['componentName'] = trlKwfStatic('Policy Notification Box');
         $ret['generators']['child']['component']['linktag'] = 'Kwc_Basic_LinkTag_Component';
         $ret['extConfig'] = 'Kwf_Component_Abstract_ExtConfig_Form';
         $ret['ownModel'] = 'Kwf_Component_FieldModel';
