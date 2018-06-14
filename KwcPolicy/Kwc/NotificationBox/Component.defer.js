@@ -11,7 +11,7 @@ onReady.onRender('.kwcClass', function (el) {
     var alterationDate = new Date(el.data('alteration-date'));
     var expirationDate = new Date(alterationDate);
         expirationDate.setDate(alterationDate.getDate() + 30);
-    var cookie = cookies.get('kwfUp-kwcNotificationBox');
+    var cookie = cookies.get('kwfUp-kwcPolicyNotificationBox');
 
     if (cookie) {
         var notificationSeen = new Date(alterationDate) < new Date(cookie);
@@ -24,7 +24,7 @@ onReady.onRender('.kwcClass', function (el) {
             el.addClass('kwcBem__hidden');
 
             var d = new Date();
-            cookies.set('kwfUp-kwcNotificationBox', d.toUTCString());
+            cookies.set('kwfUp-kwcPolicyNotificationBox', d.toUTCString());
 
             var body = $('body');
             body.removeClass('kwfUp-showNotificationBox').addClass('kwfUp-notificationSeen');
