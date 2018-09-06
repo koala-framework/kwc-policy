@@ -22,7 +22,7 @@ class KwcPolicy_Kwc_NotificationBox_Component extends Kwc_Abstract_Composite_Com
     {
         $ret = parent::getTemplateVars($renderer);
         $ret['showBanner'] = $this->_getRow()->show_banner;
-        $ret['alterationDate'] = $this->_getRow()->alteration_date;
+        $ret['alterationDate'] = date('Y/m/d H:i:s', strtotime($this->_getRow()->alteration_date)); //convert date to a format that safari can parse in new Date()
         $ret['headline'] = $this->_getRow()->headline;
         $ret['text'] = $this->_getRow()->text;
         $ret['moreText'] = $this->_getRow()->more_text;
