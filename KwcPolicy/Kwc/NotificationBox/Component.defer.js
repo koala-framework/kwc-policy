@@ -1,6 +1,6 @@
 "use strict";
 var $ = require('jquery');
-var onReady = require('kwf/on-ready');
+var onReady = require('kwf/commonjs/on-ready');
 var cookies = require('js-cookie');
 
 onReady.onRender('.kwcClass', function (el) {
